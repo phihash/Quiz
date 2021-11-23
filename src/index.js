@@ -3,6 +3,7 @@
 
 const playCorrectSound = () => {
   correctSound.src = '../audio/correct.mp3';
+  correctSound.load();
   correctSound.play();
 }
 const playFalseSound = () => {
