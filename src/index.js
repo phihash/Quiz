@@ -1,9 +1,7 @@
- const correctSound = new Audio("");
-// const falseSound = new Audio("../audio/false");
+const correctSound = new Audio("correct.mp3");
+const falseSound = new Audio("false.mp3");
 
 const playCorrectSound = () => {
-  correctSound.src = '../audio/correct.mp3';
-  correctSound.load();
   correctSound.play();
 }
 const playFalseSound = () => {
