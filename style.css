@@ -1,0 +1,84 @@
+@charset "UTF-8";
+body{
+  box-sizing: border-box;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  max-width: 1080px;
+  margin: 0 auto;
+}
+a{
+  text-decoration: none;
+}
+button{
+  cursor: pointer;
+}
+
+/* 共通ボタン */
+
+button.btn--orange {
+  color: #fff;
+  background-color: #eb6100;
+  border-radius: 0.3rem;
+  border: none;
+  border-bottom: 4px solid #b84c00;
+}
+button.btn--orange:active {
+  margin-top: 3px;
+  color: #fff;
+  background: #f56500;
+  border-radius: 0.3rem;
+  border-bottom: 2px solid #b84c00;
+}
+button.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+/* ここまでコピー　https://jajaaan.co.jp/css/button/ 　より*/
+
+
+.header{
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.start{
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.sentence{
+  margin-top: 2rem;
+}
+
+@media (min-width:600px) {
+  .header{
+    margin-top: 0.4rem;
+    padding: 1rem;
+  }
+  .sentence{
+   margin-top: 2.6rem;
+  }
+  .start{
+    font-size: 1.8rem;
+  }
+}
+
+.candidate{
+  height: 440px;
+}
+
+.next{
+  width: 20%;
+  margin: 0 auto;
+  text-align: center; /*これでボタンを真ん中に*/
+}
+
+

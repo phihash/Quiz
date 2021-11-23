@@ -2,17 +2,40 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="apple-touch-icon" href="icon.PNG">
+  <title>Quiz</title>
 </head>
 <body>
-  <button id="correctButton">正解</button>
-  <button id="falseButton">間違い</button>
-  <audio>
-    <source src="./audio/correct.mp3" type="audio/mp3">
-    <source src="./audio/false.mp3" type="audio/mp3">
-  </audio>
+  <header class="header">
+    <div class="container">
+      <h1>Quiz</h1>
+    </div>
+  </header>
+
+  <div class="sentence">
+    <div class="container">
+      <p class="start" id="start">
+        さぁ、クイズをはじめよう。
+      </p>
+    </div>
+  </div>
+
+  <div class="candidate">
+    <div class="container">
+
+    </div>
+  </div>
+
+    <div class="container">
+      <div class="next">
+      <button class="btn btn--orange btn--cubic btn--shadow start" id="startButton">START！</button>
+      </div> 
+    </div>
+
   <script src="src/index.js"></script>
 </body>
 </html>
