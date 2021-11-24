@@ -7,17 +7,8 @@
 // const playFalseSound = () => {
 //   falseSound.play();
 // };
+let clickCounter = 0;
 
-// const correctButton = document.getElementById("correctButton");
-// const falseButton = document.getElementById("falseButton");
-
-// correctButton.addEventListener('click',() => {
-//   playCorrectSound();
-// })
-// falseButton.addEventListener('click',() => {
-//   playFalseSound();
-// })
-// でーた
 const questions = [
   ["ALSとは?",["筋萎縮性側索硬化症","多発性硬化症 あるいは 僧帽弁狭窄症","再生不良性貧血","原発性胆汁性胆管炎","慢性閉塞性肺疾患"]],
   ["PSPとは?",["進行性核上性麻痺","多発性硬化症 あるいは 僧帽弁狭窄症","再生不良性貧血","原発性胆汁性胆管炎","慢性閉塞性肺疾患"]],
@@ -47,6 +38,7 @@ const candidate = document.getElementById("candidate");
 const sentence = document.getElementById("sentence");
 const changeButton = document.getElementById("changeButton");
 
+//最初の画面で選択した問題数を返す
 function questionQuantity(){
   for(let i=0;i < 5;i++){
     if(document.querySelectorAll("input[type=radio]")[i].checked){
@@ -54,7 +46,7 @@ function questionQuantity(){
     }
   }
 }
-
+//questionQuan選んだ問題数だけをランダムに選択肢、配列として返す
 function choiceQuestionSetRandomly(){
   let num = questionQuantity();
   let questionset = [];
@@ -62,7 +54,7 @@ function choiceQuestionSetRandomly(){
     let questionIndex =  Math.floor(Math.random() * questions.length);
     questionset.push(questions[questionIndex]);
   }
-  return questionset
+  return questionset;
 }
 
 function displayQuestionSet(){
@@ -73,14 +65,17 @@ function displayQuestionSet(){
   for(let i =0;i < 5;i++){
     let elmDiv = document.createElement("div");
     let elmInput = document.createElement('input');
-    console.log(questionset[0][1]);
+    let elmLabel = document.createElement('label');
     elmInput.type = "radio";
     elmInput.name = "choices";
     elmInput.value = questionset[0][1][i];
-    console.log(elmInput);
-    elmInput.textContent = questionset[0][1][i];
+    
+    elmLabel.innerText = questionset[0][1][i];
+    elmLabel.prepend(elmInput);
+
     candidate.appendChild(elmDiv);
-    elmDiv.appendChild(elmInput);
+    elmDiv.appendChild(elmLabel);
+    console.log(elmDiv);
   }
 }
 
@@ -97,8 +92,16 @@ function removeCandidate(){
   }
 }
 
+function handlerByClickCounter(){
+  if(clickCounter == 0){
+    displayQuestionSet();
+  }else if(clickCounter < questionQuantity){
+    changeButton.textContent = "次の問題へ";
+  }
+  clickCounter++;
+}
 
-changeButton.addEventListener('click',displayQuestionSet
+changeButton.addEventListener('click',handlerByClickCounter
 // () => {
 //   changeButton.textContent = "次へ";
 //   sentence.textContent = choiceQuestionSetRandomly();
