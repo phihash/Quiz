@@ -50,7 +50,6 @@ function quantityFromQuantitiesList(arr){
   return num;
 }
 
-
 function isChecked(arr){
   for(let i=0;i < arr.length;i++){
     if(arr[i].checked){
@@ -75,6 +74,14 @@ class QuizSuite{
     ShiftedQuestionList(){
       this.questions.shift();
       return this.questions;
+    }
+
+    setInitCount(num){
+      this.initCount = num;
+    }
+
+    getInitCount(){
+      return this.initCount;
     }
 
     setQuizSentence(string){
@@ -111,6 +118,10 @@ class QuizSuite{
       return this.questions[0][0][1];
     }
 
+    getScore(){
+      return this.score;
+    }
+
     plusScore(){
       this.score++;
     }
@@ -130,6 +141,7 @@ changeButton.addEventListener("click",() => {
   if(startFlag){
     //1回目
     hoge.setCount(quantityFromQuantitiesList(quantitiesList));
+    hoge.setInitCount(quantityFromQuantitiesList(quantitiesList));
     hoge.setButtonName("次の問題");
     let tmp = hoge.getSentence();
     hoge.setQuizSentence(tmp);
@@ -151,6 +163,7 @@ changeButton.addEventListener("click",() => {
       console.log("間違い");
       falseSound.play();
     }
+    scoreArea.textContent = hoge.getScore()+"点";
     hoge.setButtonName("次の問題");
     hoge.ShiftedQuestionList();
     displayQuestion();
@@ -158,6 +171,9 @@ changeButton.addEventListener("click",() => {
     hoge.degreeCount();
     if(hoge.getCount() == 0){
       removeCandidate();
+      let tmpP = document.createElement("p");
+      tmpP.textContent = "あなたの点数は"+hoge.getInitCount()+"点中"+hoge.getScore()+"点です";
+      candidate.appendChild(tmpP);
       hoge.setQuizSentence("お疲れさまでした");
       hoge.setButtonName("終了");
       setTimeout("location.reload()",2500);
@@ -171,6 +187,7 @@ console.log(hoge.getQuestionList());
   
  function displayQuestion(){
    let questionset = hoge.getAnswerListInQuestionList();
+   shuffle(questionset);
    removeCandidate();
   for(let i =0;i < 5;i++){
     let elmDiv = document.createElement("div");

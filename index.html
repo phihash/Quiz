@@ -7,22 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="apple-touch-icon" href="icon.PNG">
+  <link rel="icon" href="src/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
   <title>Quiz</title>
 </head>
 <body>
   <header class="header">
-    <div class="container">
+    <div class="container h-flex">
       <h1>Quiz</h1>
+      <p id="scoreArea" class="scoreArea">
+        0 点
+      </p>
     </div>
   </header>
 
-    <div class="container">
-      <div class="sentence-wrapper">
+    <div class="sentence-wrapper">
+       <div class="container">
         <p class="sentence" id="sentence">
           さぁ、クイズをはじめよう
-        </p>
-        <p id="scoreArea" class="scoreArea">
-          0 点
         </p>
       </div>
     </div>
