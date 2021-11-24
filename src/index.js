@@ -1,4 +1,6 @@
-let clickCounter = 0;
+const correctSound = new Audio("correct.mp3");
+const falseSound = new Audio("false.mp3");
+
 const storedQuestions = [
   [["ALSとは?","筋萎縮性側索硬化症"],["筋萎縮性側索硬化症","多発性硬化症 あるいは 僧帽弁狭窄症","再生不良性貧血","原発性胆汁性胆管炎","慢性閉塞性肺疾患"]],
   [["PSPとは?","進行性核上性麻痺"],["進行性核上性麻痺","多発性硬化症 あるいは 僧帽弁狭窄症","再生不良性貧血","原発性胆汁性胆管炎","慢性閉塞性肺疾患"]],
@@ -20,7 +22,11 @@ const storedQuestions = [
   [
     ["COPDとは?","慢性閉塞性肺疾患"],["慢性閉塞性肺疾患","筋萎縮性側索硬化症","心房細動","原発性胆汁性胆管炎","溶血性貧血"]
   ],
-  [["AFとは?","心房細動"],["心房細動","慢性閉塞性肺疾患","筋萎縮性側索硬化症","原発性胆汁性胆管炎","溶血性貧血"]]
+  [["AFとは?","心房細動"],["心房細動","慢性閉塞性肺疾患","筋萎縮性側索硬化症","原発性胆汁性胆管炎","溶血性貧血"]],
+  [["CHFとは?","うっ血性心不全"],["うっ血性心不全","ssa","心房細動","慢性閉塞性肺疾患","筋萎縮性側索硬化症",]],
+  [["CDDP","シスプラチン"],["シスプラチン","ドセタキセル","sa","アロプリノール","sa"]],
+  [["AVM","脳動静脈奇形"],["脳動静脈奇形","筋萎縮性側索硬化症","進行性核上性麻痺","クレアチニンキナーゼ","溶血性貧血"]],
+  [["APS","抗リン脂質抗体症候群",],["抗リン脂質抗体症候群","筋萎縮性側索硬化症","sa","sa","sss"]],
 ];
 // ここまでデータ
 let startFlag = true;
@@ -28,6 +34,7 @@ const candidate = document.getElementById("candidate");
 const sentence = document.getElementById("sentence");
 const changeButton = document.getElementById("changeButton");
 const quantitiesList = document.getElementsByName('quantities');
+const scoreArea = document.getElementById('scoreArea');
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -43,11 +50,11 @@ function quantityFromQuantitiesList(arr){
   return num;
 }
 
+
 function isChecked(arr){
   for(let i=0;i < arr.length;i++){
     if(arr[i].checked){
-      num = arr[i].value;
-      return true;
+      return arr[i].value;
     }
   }
   return false;
@@ -61,6 +68,15 @@ class QuizSuite{
         this.questions = questions;
     }
 
+    getListLength(){
+      return this.questions.length;
+    }
+
+    ShiftedQuestionList(){
+      this.questions.shift();
+      return this.questions;
+    }
+
     setQuizSentence(string){
       sentence.textContent = string; 
     }
@@ -68,11 +84,9 @@ class QuizSuite{
     getQuestionList(){
       return this.questions;
     }
-
     getAnswerListInQuestionList(){
       return this.questions[0][1];
     }
-
     setButtonName(string){
       changeButton.textContent = string;
     }
@@ -121,27 +135,43 @@ changeButton.addEventListener("click",() => {
     hoge.setQuizSentence(tmp);
     startFlag = false;
     displayQuestion();
-
   }
     //それ以降
     let bar = document.getElementsByName('choices');
     
-    console.log(bar);
-    console.log(isChecked(bar));
   if(isChecked(bar) == false){
     hoge.setButtonName("選択してください");
   }else{
+    //選択肢がクリックされている場合
+    if(isChecked(bar) == hoge.getAnswer()){
+      console.log("正解");
+      hoge.plusScore();
+      correctSound.play();
+    }else{
+      console.log("間違い");
+      falseSound.play();
+    }
     hoge.setButtonName("次の問題");
+    hoge.ShiftedQuestionList();
+    displayQuestion();
+    hoge.setQuizSentence(hoge.getSentence());
+    hoge.degreeCount();
+    if(hoge.getCount() == 0){
+      removeCandidate();
+      hoge.setQuizSentence("お疲れさまでした");
+      hoge.setButtonName("終了");
+      setTimeout("location.reload()",2500);
+    }
   }
   
 })
 console.log(hoge.getAnswerListInQuestionList());
 console.log(hoge.getQuestionList());
-console.log(hoge.getSentence());
+
   
  function displayQuestion(){
    let questionset = hoge.getAnswerListInQuestionList();
-  removeCandidate();
+   removeCandidate();
   for(let i =0;i < 5;i++){
     let elmDiv = document.createElement("div");
     let elmInput = document.createElement('input');
@@ -153,7 +183,6 @@ console.log(hoge.getSentence());
     elmLabel.prepend(elmInput);
     candidate.appendChild(elmDiv);
     elmDiv.appendChild(elmLabel);
-    console.log(elmDiv);
   }
 }
 

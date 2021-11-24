@@ -16,13 +16,16 @@
     </div>
   </header>
 
-  <div class="sentence-wrapper">
     <div class="container">
-      <p class="sentence" id="sentence">
-        さぁ、クイズをはじめよう。
-      </p>
+      <div class="sentence-wrapper">
+        <p class="sentence" id="sentence">
+          さぁ、クイズをはじめよう
+        </p>
+        <p id="scoreArea" class="scoreArea">
+          0 点
+        </p>
+      </div>
     </div>
-  </div>
 
     <div class="container">
       <div class="candidate" id="candidate">
@@ -53,6 +56,8 @@
     <footer class="footer">
       
     </footer>
+    <audio src="correct.mp3" type="audio/mp3"></audio>
+    <audio src="false.mp3" type="audio/mp3"></audio>
   <script src="src/index.js"></script>
 </body>
 </html>
