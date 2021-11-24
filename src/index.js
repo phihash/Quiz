@@ -43,6 +43,16 @@ function quantityFromQuantitiesList(arr){
   return num;
 }
 
+function isChecked(arr){
+  for(let i=0;i < arr.length;i++){
+    if(arr[i].checked){
+      num = arr[i].value;
+      return true;
+    }
+  }
+  return false;
+}
+
 class QuizSuite{
     score = 0;
     count = 0;
@@ -51,14 +61,16 @@ class QuizSuite{
         this.questions = questions;
     }
 
-    
-
     setQuizSentence(string){
       sentence.textContent = string; 
     }
 
     getQuestionList(){
       return this.questions;
+    }
+
+    getAnswerListInQuestionList(){
+      return this.questions[0][1];
     }
 
     setButtonName(string){
@@ -102,18 +114,33 @@ hoge = new QuizSuite(shuffleStoredQuestions(storedQuestions));
 
 changeButton.addEventListener("click",() => {
   if(startFlag){
+    //1回目
     hoge.setCount(quantityFromQuantitiesList(quantitiesList));
     hoge.setButtonName("次の問題");
     let tmp = hoge.getSentence();
-    let ans = hoge.getAnswer();
-    hoge.setQuizSentence(tmp+"と"+ans);
+    hoge.setQuizSentence(tmp);
     startFlag = false;
-  }
-  console.log(hoge);
-})
-console.log(hoge.getQuestionList());
+    displayQuestion();
 
+  }
+    //それ以降
+    let bar = document.getElementsByName('choices');
+    
+    console.log(bar);
+    console.log(isChecked(bar));
+  if(isChecked(bar) == false){
+    hoge.setButtonName("選択してください");
+  }else{
+    hoge.setButtonName("次の問題");
+  }
+  
+})
+console.log(hoge.getAnswerListInQuestionList());
+console.log(hoge.getQuestionList());
+console.log(hoge.getSentence());
+  
  function displayQuestion(){
+   let questionset = hoge.getAnswerListInQuestionList();
   removeCandidate();
   for(let i =0;i < 5;i++){
     let elmDiv = document.createElement("div");
@@ -121,8 +148,8 @@ console.log(hoge.getQuestionList());
     let elmLabel = document.createElement('label');
     elmInput.type = "radio";
     elmInput.name = "choices";
-    elmInput.value = questionset[0][1][i];
-    elmLabel.innerText = questionset[0][1][i];
+    elmInput.value = questionset[i];
+    elmLabel.innerText = questionset[i];
     elmLabel.prepend(elmInput);
     candidate.appendChild(elmDiv);
     elmDiv.appendChild(elmLabel);
@@ -130,8 +157,8 @@ console.log(hoge.getQuestionList());
   }
 }
 
-function removeCandidate(elm){
-  while( elm.firstChild ){
-    elm.removeChild( ele.firstChild );
+function removeCandidate(){
+  while( candidate.firstChild ){
+    candidate.removeChild(candidate.firstChild );
   }
 }
