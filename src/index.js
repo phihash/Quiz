@@ -22,7 +22,6 @@ const storedQuestions = [
   ],
   [["AFとは?","心房細動"],["心房細動","慢性閉塞性肺疾患","筋萎縮性側索硬化症","原発性胆汁性胆管炎","溶血性貧血"]]
 ];
-
 // ここまでデータ
 let startFlag = true;
 const candidate = document.getElementById("candidate");
@@ -52,6 +51,16 @@ class QuizSuite{
         this.questions = questions;
     }
 
+    
+
+    setQuizSentence(string){
+      sentence.textContent = string; 
+    }
+
+    getQuestionList(){
+      return this.questions;
+    }
+
     setButtonName(string){
       changeButton.textContent = string;
     }
@@ -65,7 +74,15 @@ class QuizSuite{
     }
 
     getCount(){
-      console.log(this.count);
+      return this.count;
+    }
+
+    getSentence(){
+      return this.questions[0][0][0];
+    }
+
+    getAnswer(){
+      return this.questions[0][0][1];
     }
 
     plusScore(){
@@ -83,32 +100,38 @@ function shuffleStoredQuestions(arr){
 
 hoge = new QuizSuite(shuffleStoredQuestions(storedQuestions));
 
-console.log(hoge);
-
 changeButton.addEventListener("click",() => {
   if(startFlag){
     hoge.setCount(quantityFromQuantitiesList(quantitiesList));
-    startFlag = false;
     hoge.setButtonName("次の問題");
+    let tmp = hoge.getSentence();
+    let ans = hoge.getAnswer();
+    hoge.setQuizSentence(tmp+"と"+ans);
+    startFlag = false;
   }
   console.log(hoge);
 })
+console.log(hoge.getQuestionList());
 
-// function displayQuestionSet(){
-//   let num = questionset.length;
-//   removeCandidate();
-//   sentence.textContent = questionset[0][0];
-//   for(let i =0;i < 5;i++){
-//     let elmDiv = document.createElement("div");
-//     let elmInput = document.createElement('input');
-//     let elmLabel = document.createElement('label');
-//     elmInput.type = "radio";
-//     elmInput.name = "choices";
-//     elmInput.value = questionset[0][1][i];
-//     elmLabel.innerText = questionset[0][1][i];
-//     elmLabel.prepend(elmInput);
-//     candidate.appendChild(elmDiv);
-//     elmDiv.appendChild(elmLabel);
-//     console.log(elmDiv);
-//   }
-// }
+ function displayQuestion(){
+  removeCandidate();
+  for(let i =0;i < 5;i++){
+    let elmDiv = document.createElement("div");
+    let elmInput = document.createElement('input');
+    let elmLabel = document.createElement('label');
+    elmInput.type = "radio";
+    elmInput.name = "choices";
+    elmInput.value = questionset[0][1][i];
+    elmLabel.innerText = questionset[0][1][i];
+    elmLabel.prepend(elmInput);
+    candidate.appendChild(elmDiv);
+    elmDiv.appendChild(elmLabel);
+    console.log(elmDiv);
+  }
+}
+
+function removeCandidate(elm){
+  while( elm.firstChild ){
+    elm.removeChild( ele.firstChild );
+  }
+}
