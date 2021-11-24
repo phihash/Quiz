@@ -44,17 +44,18 @@ button.btn--shadow {
 .header{
   margin-top: 1.8rem;
   text-align: center;
+  font-size: 1.0rem;
 }
 
-.start{
+.sentence{
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding: 1.0rem;
   padding-top: 0.2rem;
   padding-bottom: 0.2rem;
 }
 
-.sentence{
+.sentence-wrapper{
   margin-top: 2rem;
 }
 
@@ -63,10 +64,10 @@ button.btn--shadow {
     margin-top: 0.4rem;
     padding: 1rem;
   }
-  .sentence{
+  .sentence-wrapper{
    margin-top: 2.6rem;
   }
-  .start{
+  .sentence{
     font-size: 1.8rem;
   }
 }
@@ -75,10 +76,24 @@ button.btn--shadow {
   height: 440px;
 }
 
+.candidate div{
+  margin-bottom: 3rem ;
+}
+
 .next{
   width: 20%;
   margin: 0 auto;
   text-align: center; /*これでボタンを真ん中に*/
 }
 
+.changeButton{
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 1.0rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
 
+.footer{
+  height: 80px;
+}
