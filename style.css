@@ -115,19 +115,19 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .next{
-  width: 46%;
+  width: 48%;
   margin: 0 auto;
   text-align: center; /*これでボタンを真ん中に*/
 }
 
 .changeButton{
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 2.4rem;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
 }
 
 .footer{
-  height: 80px;
+  height: 90px;
 }
