@@ -44,6 +44,7 @@ const sentence = document.getElementById("sentence");
 const changeButton = document.getElementById("changeButton");
 const quantitiesList = document.getElementsByName('quantities');
 const scoreArea = document.getElementById('scoreArea');
+const tweetButtonArea = document.getElementById('tweetButtonArea');
 
 function shuffle(array) {
   array.sort(() => Math.random() - 0.5);
@@ -131,6 +132,10 @@ class QuizSuite{
       return this.score;
     }
 
+    getScoreRate(){
+      return this.score/this.initCount;
+    }
+
     plusScore(){
       this.score++;
     }
@@ -145,7 +150,7 @@ function shuffleStoredQuestions(arr){
 }
 
 hoge = new QuizSuite(shuffleStoredQuestions(storedQuestions));
-
+//<a href="" class="twitter-hashtag-button" data-text="よく頑張りました" data-show-count="false">Tweet #Quiz</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 changeButton.addEventListener("click",() => {
   if(startFlag){
     //1回目
@@ -158,7 +163,7 @@ changeButton.addEventListener("click",() => {
     displayQuestion();
   }
     //それ以降
-    let bar = document.getElementsByName('choices');
+  let bar = document.getElementsByName('choices');
     
   if(isChecked(bar) == false){
     hoge.setButtonName("選択してください");
@@ -178,9 +183,31 @@ changeButton.addEventListener("click",() => {
     hoge.degreeCount();
     if(hoge.getCount() == 0){
       removeCandidate();
-      let tmpP = document.createElement("p");
-      tmpP.textContent = "あなたの点数は"+hoge.getInitCount()+"点中"+hoge.getScore()+"点です";
-      candidate.appendChild(tmpP);
+      const resultSentence = document.createElement("p");
+      const tweetButton = document.createElement("a");
+      const hrefValue = 'https://twitter.com/intent/tweet?button_hashtag=Quiz&ref_src=twsrc%5Etfw';
+      tweetButton.setAttribute('href',hrefValue);
+      tweetButton.className = "twitter-share-button";
+      if(hoge.getScoreRate() == 1){
+           tweetButton.setAttribute('data-text','素晴らしいです！！');
+      }else if(hoge.getScoreRate() > 0.8){
+        tweetButton.setAttribute('data-text','頑張りましたね');
+      }else if(hoge.getScoreRate() > 0.5){
+        tweetButton.setAttribute('data-text','もう少し頑張りましょう');
+      }else if(hoge.getScoreRate() > 0.3){
+        tweetButton.setAttribute('data-text','焦りましょう');
+      }else{
+        tweetButton.setAttribute('data-text','やる気ありますか？？');
+      }
+      tweetButton.setAttribute('data-text','よく頑張りました');
+      tweetButton.innerText = 'Tweet #Quiz';
+      resultSentence.textContent = "あなたの点数は"+hoge.getInitCount()+"点中"+hoge.getScore()+"点です";
+      candidate.appendChild(resultSentence);
+      tweetButtonArea.appendChild(tweetButton);
+      const script = document.createElement('script');
+      script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+      tweetButton.appendChild(script);
+      console.log(Math.floor(hoge.getScoreRate()));
       hoge.setQuizSentence("お疲れさまでした");
       hoge.setButtonName("終了");
       if(changeButton.textContent == "終了"){

@@ -89,10 +89,15 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .candidate{
-  height: 390px;
+  height: 380px;
   width: 80%;
   margin: 0 auto;
   margin-top: 30px;
+}
+
+.candidate p{
+  margin-top: 30px;
+  text-align: center;
 }
 
 .candidate div,.candidate p{
@@ -126,8 +131,13 @@ font-family: 'Roboto Condensed', sans-serif;
   padding: 2.4rem;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
+  margin-bottom: 10px;
 }
 
+/* .twitter-hashtag-button{
+  display: block;
+} */
+
 .footer{
-  height: 90px;
+  height: 70px;
 }
