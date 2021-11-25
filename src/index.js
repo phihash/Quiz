@@ -76,11 +76,6 @@ class QuizSuite{
         // thisキーワードは現在のオブジェクトを取得します。
         this.questions = questions;
     }
-
-    getListLength(){
-      return this.questions.length;
-    }
-
     ShiftedQuestionList(){
       this.questions.shift();
       return this.questions;
@@ -164,8 +159,8 @@ changeButton.addEventListener("click",() => {
   }
     //それ以降
   let bar = document.getElementsByName('choices');
-    
-  if(isChecked(bar) == false){
+  if(isChecked(bar) == false && bar[0].name == "choices"){
+    //終了時のリロード時に選択してくださいとならないようにした
     hoge.setButtonName("選択してください");
   }else{
     //選択肢がクリックされている場合
@@ -199,7 +194,6 @@ changeButton.addEventListener("click",() => {
       }else{
         tweetButton.setAttribute('data-text','やる気ありますか？？');
       }
-      tweetButton.setAttribute('data-text','よく頑張りました');
       tweetButton.innerText = 'Tweet #Quiz';
       resultSentence.textContent = "あなたの点数は"+hoge.getInitCount()+"点中"+hoge.getScore()+"点です";
       candidate.appendChild(resultSentence);
@@ -207,7 +201,6 @@ changeButton.addEventListener("click",() => {
       const script = document.createElement('script');
       script.setAttribute('src', 'https://platform.twitter.com/widgets.js');
       tweetButton.appendChild(script);
-      console.log(Math.floor(hoge.getScoreRate()));
       hoge.setQuizSentence("お疲れさまでした");
       hoge.setButtonName("終了");
       if(changeButton.textContent == "終了"){
