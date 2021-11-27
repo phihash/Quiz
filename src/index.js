@@ -100,9 +100,6 @@ class QuizSuite{
       sentence.textContent = string; 
     }
 
-    getQuestionList(){
-      return this.questions;
-    }
     getAnswerListInQuestionList(){
       return this.questions[0][1];
     }
@@ -191,15 +188,15 @@ changeButton.addEventListener("click",() => {
       tweetButton.setAttribute('href',hrefValue);
       tweetButton.className = "twitter-share-button";
       if(hoge.getScoreRate() == 1){
-           tweetButton.setAttribute('data-text','素晴らしいです！！');
+        tweetButton.setAttribute('data-text',hoge.getInitCount()+"点中"+hoge.getScore()+"点でした。素晴らしいです！！");
       }else if(hoge.getScoreRate() > 0.8){
-        tweetButton.setAttribute('data-text','頑張りましたね');
+        tweetButton.setAttribute('data-text',hoge.getInitCount()+"点中"+hoge.getScore()+"点でした。頑張りましたね。");
       }else if(hoge.getScoreRate() > 0.5){
-        tweetButton.setAttribute('data-text','もう少し頑張りましょう');
+        tweetButton.setAttribute('data-text',hoge.getInitCount()+"点中"+hoge.getScore()+"点でした。成長が楽しみです");
       }else if(hoge.getScoreRate() > 0.3){
-        tweetButton.setAttribute('data-text','焦りましょう');
+        tweetButton.setAttribute('data-text',hoge.getInitCount()+"点中"+hoge.getScore()+"点でした。もう少し頑張りましょう");
       }else{
-        tweetButton.setAttribute('data-text','やる気ありますか？？');
+        tweetButton.setAttribute('data-text',hoge.getInitCount()+"点中"+hoge.getScore()+"点でした。やる気ありますか？");
       }
       tweetButton.innerText = 'Tweet #Quiz';
       resultSentence.textContent = "あなたの点数は"+hoge.getInitCount()+"点中"+hoge.getScore()+"点です";
