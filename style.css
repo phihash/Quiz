@@ -131,12 +131,17 @@ font-family: 'Roboto Condensed', sans-serif;
   padding: 2.4rem;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 /* .twitter-hashtag-button{
   display: block;
 } */
+
+.tweetButtonArea{
+  width: 70%;
+  margin: 0 auto;
+}
 
 .footer{
   height: 70px;
