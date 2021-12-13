@@ -19,6 +19,18 @@ button,label{
   cursor: pointer;
 }
 
+.body-wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.body-inner{
+  flex:1;
+}
+
+
+
 /* 共通ボタン */
 
 button.btn--orange {
@@ -120,13 +132,12 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .next{
-  width: 48%;
+  width: 100%;
   margin: 0 auto;
   text-align: center; /*これでボタンを真ん中に*/
 }
 
 .changeButton{
-  text-align: center;
   font-size: 0.9rem;
   padding: 2.4rem;
   padding-top: 0.6rem;
@@ -134,15 +145,13 @@ font-family: 'Roboto Condensed', sans-serif;
   margin-bottom: 30px;
 }
 
-/* .twitter-hashtag-button{
-  display: block;
-} */
-
 .tweetButtonArea{
   width: 70%;
   margin: 0 auto;
+  height: 40px;
 }
 
 .footer{
-  height: 70px;
+  background-color: #b84c00;
+  height: 80px;
 }

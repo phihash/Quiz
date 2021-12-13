@@ -19,9 +19,20 @@
   <p id="target8"></p>
   <p id="target9"></p>
   <p id="target10"></p>
+  <button id="nextButton">次へ</button>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://unpkg.com/ityped@1.0.3"></script>
   <script>
+    const nextButton = document.getElementById("nextButton");
+    nextButton.addEventListener("click",(target) => {
+      ityped.init(document.querySelector(target), {
+        strings: [writings[0]],
+        startDelay: 100, // アニメーション開始までの遅延時間をmsで指定
+        typeSpeed: 120, // タイピング速度をmsで指定
+        loop: false, // 繰り返しアニメーションを行うか
+        showCursor: true, //カーソルを表示するか
+      });
+    })
     const targets = ["#target1","#target2"]
     const writings=["1ですよ-dadadada","2ですよ"];
     //表示処理    
