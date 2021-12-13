@@ -8,46 +8,64 @@
   <link rel="stylesheet" href="page.css">
 </head>
 <body>
-  <h1>確認</h1>
-  <p id="target1"></p>
-  <p id="target2"></p>
-  <p id="target3"></p>
-  <p id="target4"></p>
-  <p id="target5"></p>
-  <p id="target6"></p>
-  <p id="target7"></p>
-  <p id="target8"></p>
-  <p id="target9"></p>
-  <p id="target10"></p>
-  <button id="nextButton">次へ</button>
+  <header class="header">
+    <h1>確認</h1>
+  </header>
+  <div class="main">
+    <p id="target1"></p>
+    <p id="target2"></p>
+    <p id="target3"></p>
+    <p id="target4"></p>
+    <p id="target5"></p>
+    <p id="target6"></p>
+    <p id="target7"></p>
+    <p id="target8"></p>
+  </div>
+  <div>
+    <button id="nextButton">次へ</button>
+  </div>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://unpkg.com/ityped@1.0.3"></script>
   <script>
     const nextButton = document.getElementById("nextButton");
-    nextButton.addEventListener("click",(target) => {
-      ityped.init(document.querySelector(target), {
-        strings: [writings[0]],
-        startDelay: 100, // アニメーション開始までの遅延時間をmsで指定
-        typeSpeed: 120, // タイピング速度をmsで指定
-        loop: false, // 繰り返しアニメーションを行うか
-        showCursor: true, //カーソルを表示するか
-      });
-    })
-    const targets = ["#target1","#target2"]
-    const writings=["1ですよ-dadadada","2ですよ"];
+    const stores = [
+      {target:"#target1",writing:"HelloHello1"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target2",writing:"222222HelloHello2"},
+    ]
+
     //表示処理    
-    function typeAnimation(target){
-        ityped.init(document.querySelector(target), {
-        strings: [writings[0]],
+    function typeAnimation(target,writing){
+        ityped.init(document.querySelector(target,writing), {
+        strings: [writing],
         startDelay: 100, // アニメーション開始までの遅延時間をmsで指定
         typeSpeed: 120, // タイピング速度をmsで指定
         loop: false, // 繰り返しアニメーションを行うか
-        showCursor: true, //カーソルを表示するか
+        showCursor: false, //カーソルを表示するか
       });
     }
-    typeAnimation(targets[0]);
-    typeAnimation(targets[1]);
-  
+    async function awaitForClick(btn,target,writing){
+      return new Promise((resolve) => {
+        typeAnimation(target,writing);
+        btn.addEventListener("click",() => {
+          console.log("kurikku");
+          // typeAnimation(target,writing);　ここで書いてはいけない
+          resolve();
+        },false);
+      })
+    }
+  (async () => {
+    for(const {target,writing} of stores){
+      await awaitForClick(nextButton,target,writing);
+    }
+  })();
   </script>
 </body>
 </html>
