@@ -24,19 +24,22 @@
   <div>
     <button id="nextButton">次へ</button>
   </div>
+  <footer class="footer">
+
+  </footer>
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://unpkg.com/ityped@1.0.3"></script>
   <script>
     const nextButton = document.getElementById("nextButton");
     const stores = [
-      {target:"#target1",writing:"HelloHello1"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target1",writing:"コウセイシンヤクとコウセイシンビョウヤクを漢字で書くと向精神薬と抗精神病薬である。"},
+      {target:"#target2",writing:"前者は精神科で使用する薬物全般を指す言葉で、後者は内因性精神病の代表疾患である統合失調症に使用するドパミン受容体遮断作用を有する神経遮断薬を指す言葉である"},
+      {target:"#target3",writing:"抗精神病薬は他にも、高齢化社会の到来により増加しているせん妄の対処療法としても使われる"},
+      {target:"#target4",writing:"3種類あり代表的な薬物名はブチロフェノン系のハロペリドール、フェノチアジン系のクロルプロマジン、非定型抗精神病薬あるいはセロトニンドパミン拮抗薬SDAsと称されるリスペリドンである"},
+      {target:"#target5",writing:"さて、抗精神病薬の説明の大部分は副作用についてで、黒質線条体のドパミン遮断作用による錐体外路症状が出現する"},
+      {target:"#target6",writing:"他に筋強剛、無動、静止振戦がある"},
+      {target:"#target7",writing:"222222HelloHello2"},
+      {target:"#target8",writing:"222222HelloHello2"},
       {target:"#target2",writing:"222222HelloHello2"},
       {target:"#target2",writing:"222222HelloHello2"},
     ]
@@ -46,7 +49,7 @@
         ityped.init(document.querySelector(target,writing), {
         strings: [writing],
         startDelay: 100, // アニメーション開始までの遅延時間をmsで指定
-        typeSpeed: 120, // タイピング速度をmsで指定
+        typeSpeed: 70, // タイピング速度をmsで指定
         loop: false, // 繰り返しアニメーションを行うか
         showCursor: false, //カーソルを表示するか
       });
