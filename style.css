@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body{
-  background-color: #FFFEF6;
+  background-color: hsl(56, 33%, 92%);
   color: #2a2a2a;
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
@@ -151,10 +151,10 @@ font-family: 'Roboto Condensed', sans-serif;
   width: 70%;
   margin: 0 auto;
   height: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .footer{
   background-color: #b84c00;
-  height: 80px;
+  height: 100px;
 }
