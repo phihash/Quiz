@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 body{
+  background-color: #FFFEF6;
+  color: #2a2a2a;
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,11 +12,51 @@ body{
   font-family: 'Noto Sans JP', sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 button{
   cursor: pointer;
 }
 
+.body-inner{
+  flex:1;
+}
+
+.buttonArea{
+  height: 3rem;
+  margin-top: 2rem;
+}
+
+.nextButton{
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: #eb6100;
+  border-radius: 0.3rem;
+  border: none;
+  border-bottom: 4px solid #b84c00;
+  padding: 0.6rem;
+}
+
+
+
+
+
+.container{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+@media (min-width:800px){
+  .container{
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
 .footer{
+  margin-top: 2rem;
   background-color: #b84c00;
   height: 80px;
 }

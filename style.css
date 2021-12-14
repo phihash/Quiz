@@ -1,5 +1,7 @@
 @charset "UTF-8";
 body{
+  background-color: #FFFEF6;
+  color: #2a2a2a;
   box-sizing: border-box;
   font-family: 'Noto Sans JP', sans-serif;
 }
