@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-  background-color: #FFFEF6;
+  background-color: hsl(56, 33%, 92%);
   color: #2a2a2a;
   margin: 0;
   padding: 0;
@@ -30,7 +30,7 @@ button{
 
 .buttonArea{
   height: 80px;
-   padding-top: 3rem; /*しかたなく */
+  padding-top: 3rem; /*しかたなく */
 }
 
 .nextButton{
@@ -46,7 +46,7 @@ button{
 
 
 .container{
-  max-width: 400px;
+  max-width: 360px;
   margin: 0 auto;
 }
 
