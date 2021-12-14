@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Psy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="page.css">
 </head>
 <body>
@@ -22,7 +24,7 @@
     <p id="target8"></p>
   </div>
   <div>
-    <button id="nextButton">次へ</button>
+    <button id="nextButton" tabindex="1">次へ</button>
   </div>
   <footer class="footer">
 
@@ -32,16 +34,14 @@
   <script>
     const nextButton = document.getElementById("nextButton");
     const stores = [
-      {target:"#target1",writing:"コウセイシンヤクとコウセイシンビョウヤクを漢字で書くと向精神薬と抗精神病薬である。"},
-      {target:"#target2",writing:"前者は精神科で使用する薬物全般を指す言葉で、後者は内因性精神病の代表疾患である統合失調症に使用するドパミン受容体遮断作用を有する神経遮断薬を指す言葉である"},
-      {target:"#target3",writing:"抗精神病薬は他にも、高齢化社会の到来により増加しているせん妄の対処療法としても使われる"},
-      {target:"#target4",writing:"3種類あり代表的な薬物名はブチロフェノン系のハロペリドール、フェノチアジン系のクロルプロマジン、非定型抗精神病薬あるいはセロトニンドパミン拮抗薬SDAsと称されるリスペリドンである"},
-      {target:"#target5",writing:"さて、抗精神病薬の説明の大部分は副作用についてで、黒質線条体のドパミン遮断作用による錐体外路症状が出現する"},
-      {target:"#target6",writing:"他に筋強剛、無動、静止振戦がある"},
-      {target:"#target7",writing:"222222HelloHello2"},
-      {target:"#target8",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
-      {target:"#target2",writing:"222222HelloHello2"},
+      {target:"#target1",writing:"1. コウセイシンヤクとコウセイシンビョウヤクを漢字で書くと向精神薬と抗精神病薬である。"},
+      {target:"#target2",writing:"2. 前者は精神科で使用する薬物全般を指す言葉で、後者は内因性精神病の代表疾患である統合失調症に使用するドパミン受容体遮断作用を有する神経遮断薬を指す言葉である。"},
+      {target:"#target3",writing:"3. 抗精神病薬は他にも、高齢化社会の到来により増加しているせん妄の対処療法としても使われる。"},
+      {target:"#target4",writing:"4. 3種類あり代表的な薬物名はブチロフェノン系のハロペリドール、フェノチアジン系のクロルプロマジン、非定型抗精神病薬あるいはセロトニンドパミン拮抗薬SDAsと称されるリスペリドンである。"},
+      {target:"#target5",writing:"5. さて、抗精神病薬の説明の大部分は副作用についてで、黒質線条体のドパミン遮断作用による錐体外路症状が出現する。"},
+      {target:"#target6",writing:"6. 他に筋強剛、無動、静止振戦がある。"},
+      {target:"#target7",writing:"7. じっとしていられず足をパタパタさせたり歩き回るアカシジアや、長期服用により口元や手元の律動的な不随運動をみせる遅発性ジスキネジアはまれであるが"},
+      {target:"#target8",writing:"8. ドパミン遮断、アセチルコリン神経伝達亢進EPSs出現を助長するためこれら不随意運動の予防には抗コリン薬のトリヘキシフェニジルやビペリデンを使用する"},
     ]
 
     //表示処理    
@@ -49,7 +49,7 @@
         ityped.init(document.querySelector(target,writing), {
         strings: [writing],
         startDelay: 100, // アニメーション開始までの遅延時間をmsで指定
-        typeSpeed: 70, // タイピング速度をmsで指定
+        typeSpeed: 60, // タイピング速度をmsで指定
         loop: false, // 繰り返しアニメーションを行うか
         showCursor: false, //カーソルを表示するか
       });
