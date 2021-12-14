@@ -20,6 +20,10 @@ button{
   cursor: pointer;
 }
 
+.main{
+  font-size: 1.4rem;
+}
+
 .body-inner{
   flex:1;
 }
