@@ -107,7 +107,7 @@ class QuizSuite{
     }
 
     setQuizSentence(string){
-      sentence.textContent = string; 
+      sentence.textContent = string;
     }
 
     getAnswerListInQuestionList(){
@@ -180,9 +180,9 @@ changeButton.addEventListener("click",() => {
     //選択肢がクリックされている場合
     if(isChecked(bar) == hoge.getAnswer()){
       hoge.plusScore();
-      correctSound.play();
+      // correctSound.play();　正解の時
     }else{
-      falseSound.play();
+      // falseSound.play(); 間違いの時
     }
     scoreArea.textContent = hoge.getScore()+"点";
     hoge.setButtonName("次の問題");
@@ -224,9 +224,9 @@ changeButton.addEventListener("click",() => {
       }
     }
   }
-  
+
 })
-  
+
  function displayQuestion(){
    let questionset = hoge.getAnswerListInQuestionList();
    shuffle(questionset);
